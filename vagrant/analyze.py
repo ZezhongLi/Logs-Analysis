@@ -1,3 +1,15 @@
+#!/usr/bin/env python3
+"""Analyzing and report module
+
+This module provides methods that could connect to database,
+fetch required information, such as top article, top authors,
+date that error appear more than 1%.
+
+This program depends on psycopg2 and interact with existing
+PostgreSQL Database.
+"""
+
+
 import psycopg2
 
 DBNAME = "news"

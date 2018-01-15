@@ -29,7 +29,7 @@ The database contains newspaper articles, as well as the web server log for the 
 	```
 - [ ] Run Analysis
 	```python
-	python analyze.py
+	python3 analyze.py 2>&1 | tee outfile
 	```
 ## Data set
  __authors table__<br/>

@@ -12,7 +12,7 @@ def connect(dbname=DBNAME):
         db = psycopg2.connect(database=DBNAME)
         c = db.cursor()
         return db, c
-    except:
+    except Exception:
         print("Error: Fail to connect to database.")
 
 
@@ -73,13 +73,14 @@ def alert_days():
     db.close()
     return results
 
+
 if __name__ == '__main__':
     print("Top Articles:")
     top_articles = top_n_articles(3)
     for i in range(len(top_articles)):
         line = str(i+1) + ". " + top_articles[i][0]\
             + " -- " + str(top_articles[i][1]) + " views."
-        print (line)
+        print(line)
 
     print("")
     print("Top Authors:")

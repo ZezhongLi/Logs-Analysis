@@ -14,54 +14,53 @@ The database contains newspaper articles, as well as the web server log for the 
 
 
 ## Prepare & Run
-- [ ] Install [VirtualBox](https://www.virtualbox.org/)
+ - [ ] Install [VirtualBox](https://www.virtualbox.org/)
 - [ ] Install [Vagrant](https://www.vagrantup.com/downloads.html)
 - [ ] Configure and start virtual machine
-- Clone this repository to your local machine
-- In shell, cd to `/vagrant` folder where `Vagrantfile` lies
-- Run `vagrant up` to configure virtual machine
-- Run `vagrant ssh` to connect to your local machine
-- Change directory to `/vagrant` in your virtual machine
+	- Clone this repository to your local machine
+	- In shell, cd to `/vagrant` folder where `Vagrantfile` lies
+	- Run `vagrant up` to configure virtual machine
+	- Run `vagrant ssh` to connect to your local machine
+	- Change directory to `/vagrant` in your virtual machine
 - [ ] Download [news data](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip), move newsdata.sql to `/vagrant` shared folder
 - [ ] Setup Database, execute following command in your virtual machine
-```sql
-psql -d news -f newsdata.sql
-```
-- Run Analysis
-```python
-python analyze.py
-```
+	```sql
+	psql -d news -f newsdata.sql
+	```
+- [ ] Run Analysis
+	```python
+	python analyze.py
+	```
 ## Data set
-__authors table__<br/>
+ __authors table__<br/>
 The authors table includes information about the authors of articles.
 ```sql
 CREATE TABLE authors (
-name text NOT NULL,
-bio text,
-id integer NOT NULL
+    name text NOT NULL,
+    bio text,
+    id integer NOT NULL
 );
 ```
-__articles table__<br/>
+ __articles table__<br/>
 ```sql
 CREATE TABLE articles (
-author integer NOT NULL,
-title text NOT NULL,
-slug text NOT NULL,
-lead text,
-body text,
-"time" timestamp with time zone DEFAULT now(),
-id integer NOT NULL
+    author integer NOT NULL,
+    title text NOT NULL,
+    slug text NOT NULL,
+    lead text,
+    body text,
+    "time" timestamp with time zone DEFAULT now(),
+    id integer NOT NULL
 );
 ```
-__log table__<br/>
+ __log table__<br/>
 ```sql
 CREATE TABLE log (
-path text,
-ip inet,
-method text,
-status text,
-"time" timestamp with time zone DEFAULT now(),
-id integer NOT NULL
+    path text,
+    ip inet,
+    method text,
+    status text,
+    "time" timestamp with time zone DEFAULT now(),
+    id integer NOT NULL
 );
 ```
-
